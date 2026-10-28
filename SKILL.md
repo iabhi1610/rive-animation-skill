@@ -41,8 +41,20 @@ Order of work for any new animation:
 
 What usually makes a file big, from largest to smallest:
 **keyframes > embedded images > fonts > audio > shapes.**
-In one production file with about 50,000 keys, referencing fonts and thinning keys took it from
-2,829 KB to 485 KB with no visible change.
+Real production screens, measured after each step (thinning checked with frame_diff: worst
+difference 2/255 or less on the files checked):
+
+| Screen | Before | Fonts and photos referenced | Keys thinned | Saved |
+|---|---:|---:|---:|---:|
+| Reward unlock (chest, confetti) | 2,829 KB | 805 KB | **485 KB** | 83% |
+| Word of the day card | 735 KB | 57 KB | **55 KB** | 93% |
+| Streak goal | 461 KB | 320 KB | **290 KB** | 37% |
+| Result screen | 374 KB | 209 KB | **198 KB** | 47% |
+| Streak challenge | 292 KB | 152 KB | **122 KB** | 58% |
+| Daily streak | 238 KB | 97 KB | **88 KB** | 63% |
+
+Text-heavy files gain most from referencing fonts. Busy motion (confetti, particles) gains most from
+thinning: the reward screen had about 50,000 keys.
 
 ### Checklist
 

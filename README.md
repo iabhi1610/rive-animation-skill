@@ -9,6 +9,42 @@ An AI agent skill for building Rive animations with RML and the Rive CLI. It tea
 - **Support many device sizes**: build a responsive layout shell, handle safe areas, and test at real phone and tablet sizes.
 - **Ask good questions**: when a brief is vague, ask up to 3 questions based on the 12 principles of animation, plus which devices it's for.
 
+## Example: file size
+
+Real production screens, measured after each step. Thinning was checked frame by frame with
+`frame_diff.py` (worst difference 2/255 or less on the files checked), so the motion looks the same.
+
+| Screen | Before | Fonts and photos referenced | Keys thinned | Saved |
+|---|---:|---:|---:|---:|
+| Reward unlock (chest, confetti) | 2,829 KB | 805 KB | **485 KB** | 83% |
+| Word of the day card | 735 KB | 57 KB | **55 KB** | 93% |
+| Streak goal | 461 KB | 320 KB | **290 KB** | 37% |
+| Result screen | 374 KB | 209 KB | **198 KB** | 47% |
+| Streak challenge | 292 KB | 152 KB | **122 KB** | 58% |
+| Daily streak | 238 KB | 97 KB | **88 KB** | 63% |
+
+- **Fonts and photos referenced** (biggest win for text-heavy files): the app already has the font, so the `.riv` keeps only its name.
+- **Keys thinned** (biggest win for busy motion like confetti): the reward screen had about 50,000 keyframes.
+
+A small version of what thinning does:
+
+Before: 31 linear keys sampling a straight move, and 7 hold keys repeating the same opacity.
+
+```xml
+<KeyFrameDouble value="50" frame="0" interpolationType="linear"/>
+<KeyFrameDouble value="55" frame="2" interpolationType="linear"/>
+<KeyFrameDouble value="60" frame="4" interpolationType="linear"/>
+<!-- ... 27 more on the same line ... -->
+<KeyFrameDouble value="200" frame="60" interpolationType="linear"/>
+```
+
+After `thin_keys.py`: 4 keys in all, and `frame_diff.py` reports 0/255 difference.
+
+```xml
+<KeyFrameDouble frame="0" value="50" interpolationType="linear"/>
+<KeyFrameDouble frame="60" value="200" interpolationType="linear"/>
+```
+
 ## Install
 
 It uses the open Agent Skills format (a folder with a `SKILL.md`), so it works in any coding agent that
