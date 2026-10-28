@@ -11,22 +11,42 @@ An AI agent skill for building Rive animations with RML and the Rive CLI. It tea
 
 ## Install
 
-For every project:
+It uses the open Agent Skills format (a folder with a `SKILL.md`), so it works in any coding agent that
+supports skills: Cursor, Codex, and others.
+
+### One command, any agent
 
 ```bash
-git clone https://github.com/iabhi1610/rive-animation-skill ~/.claude/skills/rive-animation
+npx skills add iabhi1610/rive-animation-skill
 ```
 
-For one project, run this in the project folder:
+It asks which of your installed agents to add it to. Add `-g` to install it for all your projects.
+
+### Or clone it into your agent's skills folder
+
+Most agents read `.agents/skills/`, so this one command covers Cursor and Codex:
 
 ```bash
-git clone https://github.com/iabhi1610/rive-animation-skill .claude/skills/rive-animation
+# this project only (run in the project folder)
+git clone https://github.com/iabhi1610/rive-animation-skill .agents/skills/rive-animation
+
+# every project
+git clone https://github.com/iabhi1610/rive-animation-skill ~/.agents/skills/rive-animation
 ```
+
+| Agent | This project | Every project |
+|---|---|---|
+| Cursor | `.agents/skills/` or `.cursor/skills/` | `~/.agents/skills/` or `~/.cursor/skills/` |
+| Codex | `.agents/skills/` | `~/.agents/skills/` |
+| Any other agent | its skills folder (see its docs) | its skills folder |
+
+If your agent has no skills support, point it at the file from your `AGENTS.md` or rules file:
+"For Rive work, follow `rive-animation/SKILL.md`."
 
 You end up with:
 
 ```
-your-project/.claude/skills/rive-animation/
+.agents/skills/rive-animation/
 ├── SKILL.md
 └── tools/
     ├── thin_keys.py     drop keyframes that change nothing

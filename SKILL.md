@@ -255,7 +255,7 @@ turning on `fit=True` (`--fit` on the command line).
 main moment is, or how long it runs. If the brief, the design source or a sibling animation already
 answers a question, do not ask it. Pick a default and say so.
 
-**Keep it short:** at most **3 questions**, once per brief, all in one message (use AskUserQuestion with
+**Keep it short:** at most **3 questions**, once per brief, all in one message (use your agent's question tool if it has one, with
 options, and put a recommended default first). Never stop again mid-build to ask more. Use the defaults
 below for anything left open.
 
