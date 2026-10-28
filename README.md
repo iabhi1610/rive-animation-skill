@@ -108,7 +108,7 @@ python3 tools/frame_diff.py OLD_PROJECT NEW_PROJECT out_dir 0.5s 1s 1.5s
 
 ## Contributors
 
-• Abhijeet Ranjan ([@iabhi1610](https://x.com/iabhi1610))
+• Abhijeet Ranjan ([@iabhi1610](https://x.com/iabhi1610)) <br>
 • Jahanvi Singh ([@me_Jahanvi](https://x.com/me_Jahanvi))
 
 ## License
